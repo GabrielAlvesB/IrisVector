@@ -1,4 +1,4 @@
-//! Desktop printer transport. VectorCraft composes every page and copy before submission;
+//! Desktop printer transport. IrisVector composes every page and copy before submission;
 //! craft-print owns discovery and spooling.
 use std::process::Command;
 use vectorcraft_ui_egui::print::{PrintJob, PrintService, Printer};

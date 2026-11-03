@@ -63,7 +63,7 @@ fn the_bar_starts_at_file() {
     for t in titles {
         assert!(shown.iter().any(|s| s == t), "{t} missing from {shown:?}");
     }
-    assert!(!shown.iter().any(|s| s == "VectorCraft"), "{shown:?}");
+    assert!(!shown.iter().any(|s| s == "IrisVector"), "{shown:?}");
 }
 
 #[test]
@@ -912,7 +912,7 @@ fn unlock_all_and_show_all_clicked_with_shift_alt_act_within_the_group() {
     }
 }
 
-/// #3724: Window › New Window is greyed out until VectorCraft can open a second window on a
+/// #3724: Window › New Window is greyed out until IrisVector can open a second window on a
 /// document, instead of being enabled and answering with an internal milestone note.
 #[test]
 fn new_window_is_disabled_until_it_opens_a_window() {

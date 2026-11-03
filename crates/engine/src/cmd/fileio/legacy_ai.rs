@@ -93,8 +93,8 @@ fn see_through(cmd: &str, p: &Value) -> Result<SeeThrough> {
     }
 }
 
-/// What the format loses against a VectorCraft document, reported with every save.
-const FIDELITY: &str = "a legacy .ai (version 7) keeps layers, groups, compound paths, clipping groups, type, colours, gradients and images, not the rest: save as VectorCraft to keep everything editable";
+/// What the format loses against a IrisVector document, reported with every save.
+const FIDELITY: &str = "a legacy .ai (version 7) keeps layers, groups, compound paths, clipping groups, type, colours, gradients and images, not the rest: save as IrisVector to keep everything editable";
 const FLATTENED: &str =
     "transparent images (see-through pixels, opacity or a blending mode) are flattened with the art under them into opaque images";
 const OMITTED: &str = "transparent images (see-through pixels, opacity or a blending mode) are left out";

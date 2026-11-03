@@ -143,7 +143,7 @@ pub(super) fn bezpath(p: &usvg::tiny_skia_path::Path, m: Affine) -> BezPath {
 }
 
 /// The path usvg makes of a `<circle>` or `<ellipse>` (`p`: one closed outline of arcs from the
-/// right end of the horizontal axis round through the bottom) as the ellipse VectorCraft draws: four
+/// right end of the horizontal axis round through the bottom) as the ellipse IrisVector draws: four
 /// smooth anchors on the axes in the same order, each quarter a cubic with handles [`KAPPA`] of the
 /// radii long, the ellipse export writes as `<ellipse>`. `None` when `p` is not such an outline.
 pub(super) fn drawn_ellipse(p: &usvg::tiny_skia_path::Path) -> Option<PathData> {

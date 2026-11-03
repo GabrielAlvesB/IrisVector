@@ -1,4 +1,4 @@
-//! Desaturate: an example VectorCraft object filter plug-in (plug-in ABI v1, see
+//! Desaturate: an example IrisVector object filter plug-in (plug-in ABI v1, see
 //! `docs/plugins.md`).
 //!
 //! It reads the selected paths as JSON, moves every colour (solid fills and strokes, gradient

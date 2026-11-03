@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build and package VectorCraft for FreeBSD:
+# Build and package IrisVector for FreeBSD:
 #
 #   $DIST/vectorcraft-<version>-freebsd-<arch>.tar.gz   a /usr/local-style tree:
 #       vectorcraft-<version>-freebsd-<arch>/{bin, share/applications, share/icons, share/mime,
@@ -16,7 +16,7 @@ set -euo pipefail
 # shellcheck source=../env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
 LINUX="$ROOT/packaging/linux"
-APP_ID=ai.storyteller.vectorcraft
+APP_ID=com.iris.irisvector
 
 SKIP_BUILD=0
 while [[ $# -gt 0 ]]; do
@@ -45,7 +45,7 @@ if [[ -n "${CARGO_BUILD_TARGET:-}" ]]; then
 fi
 BASENAME="vectorcraft-$VERSION-freebsd-$ARCH"
 
-echo "==> VectorCraft $VERSION for FreeBSD $ARCH"
+echo "==> IrisVector $VERSION for FreeBSD $ARCH"
 
 if [[ "$SKIP_BUILD" = 0 ]]; then
   (cd "$ROOT" && cargo build --release --locked -p vectorcraft -p vectorcraft-cli ${CARGO_BUILD_TARGET:+--target "$CARGO_BUILD_TARGET"})

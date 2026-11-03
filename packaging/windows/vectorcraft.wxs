@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="VectorCraft" Manufacturer="Learning Machines LLC" Version="$(var.Version)" UpgradeCode="601C6437-08AE-4645-ADCC-27F036C2EA2F" Scope="perUserOrMachine" Compressed="yes" Language="1033">
-    <SummaryInformation Description="VectorCraft vector illustration app" Manufacturer="Learning Machines LLC" />
+  <Package Name="IrisVector" Manufacturer="Gabriel Alves Tech" Version="$(var.Version)" UpgradeCode="6E81D984-F442-493F-A31A-0FF14C2D6953" Scope="perUserOrMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="IrisVector vector illustration app" Manufacturer="Gabriel Alves Tech" />
     <?include $(sys.SOURCEFILEDIR)install-policy.wxi?>
     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of VectorCraft is already installed." />
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of IrisVector is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
     <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/vectorcraft" />
-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/vectorcraft" />
-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/GabrielAlvesB/IrisVector" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/GabrielAlvesB/IrisVector" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/GabrielAlvesB/IrisVector/issues" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="CraftSuiteFolder" Name="ArtCraft">
-        <Directory Id="INSTALLFOLDER" Name="VectorCraft" />
+      <Directory Id="CraftSuiteFolder" Name="Iris">
+        <Directory Id="INSTALLFOLDER" Name="IrisVector" />
       </Directory>
     </StandardDirectory>
     <StandardDirectory Id="ProgramMenuFolder" />
@@ -24,7 +24,7 @@
 
     <!-- An upgrade installs where the user put the previous version (written by VectorcraftApp). -->
 
-    <Feature Id="Main" Title="VectorCraft" Level="1">
+    <Feature Id="Main" Title="IrisVector" Level="1">
       <ComponentGroupRef Id="VectorcraftFiles" />
       <ComponentGroupRef Id="PdfDocumentation" />
       <ComponentRef Id="DesktopShortcut" />
@@ -73,8 +73,8 @@
     <Property Id="VectorcraftVersion" Value="$(var.DisplayVersion)" />
 
     <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="VectorCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch VectorCraft" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="IrisVector $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch IrisVector" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
     <Property Id="WixShellExecTarget" Value="[#VectorcraftExe]" />
     <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
@@ -86,13 +86,13 @@
       <Files Include="$(var.DocsDir)\**" />
     </ComponentGroup>
     <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
-      <Component Id="VectorcraftApp" Guid="0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103">
+      <Component Id="VectorcraftApp" Guid="901E7A39-20D3-4CE0-B34D-0ED380BF9422">
         <File Id="VectorcraftExe" Source="$(var.BinDir)\vectorcraft.exe" KeyPath="yes">
-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="VectorCraft" Description="VectorCraft vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="VectorcraftIcon.ico" IconIndex="0" />
+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="IrisVector" Description="IrisVector vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="VectorcraftIcon.ico" IconIndex="0" />
         </File>
 
         <RegistryValue Root="HKMU" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\vectorcraft.exe" Value="[#VectorcraftExe]" Type="string" />
-        <RegistryValue Root="HKMU" Key="Software\VectorCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+        <RegistryValue Root="HKMU" Key="Software\IrisVector" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
       </Component>
 
       <Component Id="VectorcraftCli">
@@ -103,9 +103,9 @@
     <!-- Installed only with INSTALLDESKTOPSHORTCUT set (the Shortcuts page's box); removed with the
          app. A per-machine install puts it on the common desktop. `wix msi validate` reports ICE38,
          ICE43 and ICE57 for it: they take a desktop shortcut for per-user data, which it isn't here. -->
-    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="498F2D4C-E655-47F6-B406-2D4C449B8D26" Condition="INSTALLDESKTOPSHORTCUT">
-      <Shortcut Id="DesktopShortcut" Name="VectorCraft" Description="VectorCraft vector illustration app" Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
-      <RegistryValue Root="HKMU" Key="Software\VectorCraft" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
+    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="867FB674-5D1A-4313-8B5F-69042A9FBF2B" Condition="INSTALLDESKTOPSHORTCUT">
+      <Shortcut Id="DesktopShortcut" Name="IrisVector" Description="IrisVector vector illustration app" Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
+      <RegistryValue Root="HKMU" Key="Software\IrisVector" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
     </Component>
   </Fragment>
 </Wix>

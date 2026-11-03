@@ -175,7 +175,7 @@ fn the_file_type_picked_in_the_save_dialog_decides_the_format() {
 fn the_suggested_names_extension_in_another_case_gets_the_picked_types() {
     for (cmd, answer, expected) in [
         ("file.save", &["/art/Untitled-1.VECTORCRAFT", "ai"][..], "/art/Untitled-1.ai"),
-        ("file.save", &["/art/Untitled-1.VectorCraft", "svg"], "/art/Untitled-1.svg"),
+        ("file.save", &["/art/Untitled-1.IrisVector", "svg"], "/art/Untitled-1.svg"),
         ("file.saveAsTemplate", &["/art/Untitled-1.VCTemplate", "ait"], "/art/Untitled-1.ait"),
     ] {
         let (mut app, shown, written) = portal_app();
@@ -222,7 +222,7 @@ fn a_replaced_extension_asks_before_replacing_a_file_there() {
 }
 
 /// Save As to the type picked asks for that format's options: the .ai options (Version first),
-/// not VectorCraft's.
+/// not IrisVector's.
 #[test]
 fn save_as_asks_for_the_options_of_the_file_type_picked() {
     let (mut app, shown, written) = portal_app();
@@ -231,7 +231,7 @@ fn save_as_asks_for_the_options_of_the_file_type_picked() {
     assert_eq!((d.kind.as_str(), d.str("format")), (dialogs::save_options::KIND, "ai".to_string()));
 }
 
-/// A document saved as .ai lists .ai first: VectorCraft picked with a bare name or with the
+/// A document saved as .ai lists .ai first: IrisVector picked with a bare name or with the
 /// suggested name saves a native file. Save a Copy and Save as Template follow the type picked too.
 #[test]
 fn a_document_in_another_format_saves_as_the_type_picked() {

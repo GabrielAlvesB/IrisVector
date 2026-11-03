@@ -1,7 +1,7 @@
 {
   "id": "vectorcraft",
-  "name": "VectorCraft",
-  "upgradeCode": "601C6437-08AE-4645-ADCC-27F036C2EA2F",
+  "name": "IrisVector",
+  "upgradeCode": "6E81D984-F442-493F-A31A-0FF14C2D6953",
   "sources": [
     "vectorcraft.wxs"
   ],
@@ -26,13 +26,13 @@
     ],
     [
       "-1",
-      "Software\\VectorCraft",
+      "Software\\IrisVector",
       "InstallDir",
       "[INSTALLFOLDER]"
     ],
     [
       "-1",
-      "Software\\VectorCraft",
+      "Software\\IrisVector",
       "DesktopShortcut",
       "#1"
     ]

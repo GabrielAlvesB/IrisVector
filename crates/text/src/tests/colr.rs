@@ -1,5 +1,5 @@
 //! COLR colour glyphs (v0 layers, v1 paints): read as trees of document nodes in font units, or
-//! as an image for paints VectorCraft lacks, and laid out with the type.
+//! as an image for paints IrisVector lacks, and laid out with the type.
 
 use skrifa::MetadataProvider;
 use skrifa::color::ColorGlyphFormat;

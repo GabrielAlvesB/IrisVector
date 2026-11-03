@@ -1,7 +1,7 @@
-//! macOS: the windows' Metal layers are tagged sRGB, so macOS converts what VectorCraft draws to
+//! macOS: the windows' Metal layers are tagged sRGB, so macOS converts what IrisVector draws to
 //! the display's color profile (#2249, #3161).
 //!
-//! VectorCraft draws sRGB values. Apple's documentation of `CAMetalLayer.colorspace` says: "When a
+//! IrisVector draws sRGB values. Apple's documentation of `CAMetalLayer.colorspace` says: "When a
 //! color space is present, Core Animation performs any necessary color space transformations when
 //! compositing this content. The default value is `nil`, indicating that the rendered content
 //! isn’t color-matched"

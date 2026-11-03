@@ -39,7 +39,7 @@ pub fn divider(ui: &mut Ui) {
 }
 
 /// The `Id` under which [`dim_label`]/[`field_label`] leave the label a following field should be
-/// named by. egui 0.37's kittest fails an input with no accessible name, and VectorCraft paints
+/// named by. egui 0.37's kittest fails an input with no accessible name, and IrisVector paints
 /// most labels beside, not inside, their fields.
 fn next_label_id() -> egui::Id {
     egui::Id::unique("vectorcraft-next-input-label")

@@ -1,16 +1,21 @@
-//! VectorCraft's egui frontend: an Illustrator-style UI over `vectorcraft-engine`.
+//! IrisVector's egui frontend: an Illustrator-style UI over `vectorcraft-engine`.
 //!
 //! The UI is thin: every action goes through [`VectorcraftApp::run`], which dispatches UI commands
 //! (view/window) here and everything else to the engine. The same entry point serves menus,
 //! shortcuts, the ⌘K palette and the control channel ([`control`]).
 #![forbid(unsafe_code)]
 
-/// VectorCraft as craft-update knows it, with its 128 px icon and accent colour: the update
-/// prompt shows both, and an AppImage's menu entry gets the icon.
+/// IrisVector as craft-update knows it, with its 128 px icon and accent colour: the update
+/// prompt shows both, and an AppImage's menu entry gets the icon. Updates come from IrisVector's
+/// own releases (`repo`, compared case-sensitively), never VectorCraft's: the rest of
+/// `suite::VECTORCRAFT` (asset names, binaries) is kept because the release files keep those names.
 #[cfg(not(target_arch = "wasm32"))]
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
-    icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png")),
-    accent: Some([0xe8, 0x57, 0x3f]),
+    icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/com.iris.irisvector.png")),
+    accent: Some([0xe0, 0x70, 0x00]),
+    name: "IrisVector",
+    repo: "GabrielAlvesB/IrisVector",
+    developer: "Gabriel Alves Tech",
     ..craft_update::suite::VECTORCRAFT
 };
 

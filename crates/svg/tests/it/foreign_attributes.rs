@@ -1,5 +1,5 @@
 //! Attributes in other applications' XML namespaces (https://www.w3.org/TR/xml-names/) survive a
-//! round trip through VectorCraft: kept on import, written back on export with their namespaces
+//! round trip through IrisVector: kept on import, written back on export with their namespaces
 //! declared on the root.
 use usvg::roxmltree;
 use vectorcraft_doc::{Document, ForeignAttribute, Node, NodeKind};

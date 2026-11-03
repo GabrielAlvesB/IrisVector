@@ -334,7 +334,7 @@ fn a_copied_ai_file_pastes_from_its_editing_data() {
     // (The page's type comes in as type too now that PDF import keeps it, so only this side is told apart.)
     let (r, pasted) = paste(&mut s, &typed, true);
     assert!(has_type(&pasted), "{r}: {pasted:?}");
-    // A `.ai` VectorCraft wrote: the document it carries, its hidden square too.
+    // A `.ai` IrisVector wrote: the document it carries, its hidden square too.
     let mut other = Session::new();
     other.execute("file.new", &json!({"width": 200, "height": 100})).unwrap();
     for x in [10, 100] {
@@ -1174,7 +1174,7 @@ fn half_outlined_ai(story: Option<&str>, more: usize, type_content: &str) -> Vec
     let page = PdfPage {
         resources: format!(
             "/Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >> \
-             /F2 << /Type /Font /Subtype /Type1 /BaseFont /VectorCraftTestUnnamed /ToUnicode {} 0 R >> >>",
+             /F2 << /Type /Font /Subtype /Type1 /BaseFont /IrisVectorTestUnnamed /ToUnicode {} 0 R >> >>",
             first_extra(1) + 1
         ),
         entries: format!("/PieceInfo << /Illustrator << /Private << /AIPrivateData1 {} 0 R /NumBlock 1 >> >> >>", first_extra(1)),
@@ -1399,8 +1399,8 @@ fn open_rows(s: &Session) -> (Vec<String>, Vec<String>) {
     (rows, open)
 }
 
-/// #1475: a `.ai` another app wrote keeps no open rows VectorCraft reads, so it opens with every
-/// row closed, its top-level layers as its groups; a `.ai` VectorCraft wrote, and other formats,
+/// #1475: a `.ai` another app wrote keeps no open rows IrisVector reads, so it opens with every
+/// row closed, its top-level layers as its groups; a `.ai` IrisVector wrote, and other formats,
 /// open as before (with their top-level layers open unless the file says otherwise).
 #[test]
 fn an_illustrator_ai_file_opens_with_its_layers_closed() {
@@ -1415,7 +1415,7 @@ fn an_illustrator_ai_file_opens_with_its_layers_closed() {
     // The same art as an EPS: its top-level layers open.
     open(&mut s, "art.eps", &ai::eps(&ai::sample_data(), ai::page_ps()), json!({})).unwrap();
     assert_eq!(open_rows(&s).1, ["Art", "Hidden"]);
-    // Saved as .ai by VectorCraft, it opens with the rows it was saved with.
+    // Saved as .ai by IrisVector, it opens with the rows it was saved with.
     let saved = s.execute("document.save", &json!({"format": "ai"})).unwrap();
     let bytes = vectorcraft_format::base64_decode(saved["dataBase64"].as_str().unwrap()).unwrap();
     let r = open(&mut s, "again.ai", &bytes, json!({})).unwrap();

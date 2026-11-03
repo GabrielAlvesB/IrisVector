@@ -1,6 +1,6 @@
 //! Affinity documents (`.af`, `.afdesign`, `.afphoto`, `.afpub`): the native layers, curves,
 //! shapes, artboards, text, tables, master pages, layer effects and images that
-//! `vectorcraft-affinity` reads, mapped to editable VectorCraft art. Whatever the reader could not map is listed in the warnings. A file whose
+//! `vectorcraft-affinity` reads, mapped to editable IrisVector art. Whatever the reader could not map is listed in the warnings. A file whose
 //! native document can't be read opens as its embedded preview instead, with a warning that says
 //! why, and can't be placed.
 

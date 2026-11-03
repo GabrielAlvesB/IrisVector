@@ -4,7 +4,7 @@
 //! ([helpx: maintain proportions while scaling symbols](https://helpx.adobe.com/illustrator/desktop/manage-objects/traces-mockups-symbols/maintain-proportions-while-scaling-symbols.html)).
 //! New guides sit a quarter of the symbol's width and height in from each edge.
 //!
-//! VectorCraft's own rules: the corners keep their size, the top and bottom edges stretch only in
+//! IrisVector's own rules: the corners keep their size, the top and bottom edges stretch only in
 //! width, the left and right edges only in height, and the center in both. When the instance is
 //! smaller than its two outer cells on an axis, both shrink in proportion and the center is empty.
 //! The cells are sized along the symbol's own axes, and the instance's rotation, shear, reflection
@@ -85,7 +85,7 @@ impl NineSliceGuide {
 }
 
 /// The narrowest center band a guide dragged toward the opposite guide leaves, as a fraction of
-/// the art's width or height (VectorCraft's own rule).
+/// the art's width or height (IrisVector's own rule).
 pub const MIN_CENTER_BAND: f64 = 0.001;
 
 /// The 9-slice guides of the symbol edited in symbol editing mode, over its art on the editing
@@ -264,7 +264,7 @@ impl AxisMap {
 /// How an instance of a symbol with 9-slice guides places its art: a map from symbol space to
 /// document space that is affine within each of the nine cells and continuous across the guides.
 /// The guides cut the art along the symbol's own axes; the instance's rotation, shear, reflection
-/// and position apply after the cells are sized (VectorCraft's own rule).
+/// and position apply after the cells are sized (IrisVector's own rule).
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct NineSliceMap {
     /// Symbol space → the art at its natural size (an axis-aligned scale).
@@ -397,7 +397,7 @@ impl NineSliceMap {
     }
 
     /// Symbol art `art` (in symbol space) placed in document space, its instances measured with
-    /// the symbols of `doc`. VectorCraft's own rules:
+    /// the symbols of `doc`. IrisVector's own rules:
     ///
     /// - An object whose geometric box lies in one cell is placed by that cell's map, so an
     ///   object in a corner keeps its size and stays as it is (live shapes, type and images

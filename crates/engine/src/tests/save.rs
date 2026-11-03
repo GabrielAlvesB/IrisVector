@@ -99,7 +99,7 @@ fn save_as_takes_on_path_format_and_options() {
     let _ = std::fs::remove_dir_all(d);
 }
 
-/// #4523: a new document's VectorCraft Options start as the last native save used them (not its
+/// #4523: a new document's IrisVector Options start as the last native save used them (not its
 /// artboard range, nor Use Compression, which its preference decides).
 #[test]
 fn a_new_document_offers_the_native_options_used_last() {
@@ -211,7 +211,7 @@ fn templates_suggest_a_name_in_the_templates_folder_and_open_untitled() {
     // With no preference the folder is under the user's home (where there is one).
     s.prefs.templates_folder.clear();
     if let Some(f) = crate::cmd::fileio::templates_folder(&s.prefs) {
-        assert!(f.ends_with("VectorCraft Templates"), "{f}");
+        assert!(f.ends_with("IrisVector Templates"), "{f}");
     }
     let _ = std::fs::remove_dir_all(d);
 }

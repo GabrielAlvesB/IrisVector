@@ -1,4 +1,4 @@
-//! Pathfinder panel: Shape Modes (+ Expand) and Pathfinders, with icons drawn for VectorCraft.
+//! Pathfinder panel: Shape Modes (+ Expand) and Pathfinders, with icons drawn for IrisVector.
 //! Alt-clicking a Shape Mode makes a compound shape; with members of one selected, a Shape Mode
 //! sets theirs.
 

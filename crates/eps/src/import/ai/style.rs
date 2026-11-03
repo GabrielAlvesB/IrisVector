@@ -931,7 +931,7 @@ fn shape_effect(f: &Filter) -> Option<Effect> {
     let id = match shape {
         0.0 => "convertToShape.rectangle",
         1.0 => "convertToShape.roundedRectangle",
-        // A relative Ellipse in the file is drawn round the enlarged box, and VectorCraft's inside
+        // A relative Ellipse in the file is drawn round the enlarged box, and IrisVector's inside
         // it: it keeps its drawn look.
         2.0 if absolute => "convertToShape.ellipse",
         _ => return None,
